@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="w-full mt-12">
       <div className='ml-24 flex h-80 justify-between mr-24'>
       <div className='w-64'>
-        <h2 className='font-bold text-2xl mb-8'>Funiro.</h2>
+        <h2 className='font-bold text-2xl mb-8'>Furniro.</h2>
         <p className='font-normal text-base text-[#9F9F9F] mb-7'>400 University Drive Suite 200 Coral Gables,
         FL 33134 USA</p>
         <div className='flex -ml-4'>
