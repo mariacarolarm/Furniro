@@ -11,6 +11,9 @@ import potty from '../../assets/images/furniture/Potty.png'
 import respira from '../../assets/images/furniture/Respira.png'
 import syltherine from '../../assets/images/furniture/Syltherine.png'
 import Card from './Card'
+import image from '../../assets/images/home/Image.png'
+import Carousel from './Carousel'
+import Gallery from './Gallery'
 
 const cards = [
   {
@@ -79,7 +82,32 @@ const Home = () => {
       {cards.map((card, index) => (
         <Card key={index} {...card} />
       ))}
+      </div>
+      <div className='text-center mb-10'>
+        <button className='w-60 h-16 bg-white text-[#B88E2F] font-semibold border-2 border-[#B88E2F]'>Show More</button>
+      </div>
     </div>
+    <div className='bg-[#FAF3EA] w-full h-3/5 flex justify-center items-center gap-10'>
+      <div className='w-2/6 mt-56'>
+        <h1 className='text-4xl font-bold mb-5'>50+ Beautiful rooms inspiration</h1>
+        <p className='font-medium text-base text-[#616161] mb-5'>Our designer already made a lot of beautiful prototipe of rooms that inspire you</p>
+        <button className='w-44 h-12 bg-[#B88E2F] text-white'>Explore More</button>
+      </div>
+      <div>
+        <img src={image} alt="" />
+      </div>
+      <div>
+        <Carousel />
+      </div>
+    </div>
+    <div>
+      <div className='text-center mt-10'>
+        <p className='text-xl font-semibold text-[#616161]'>Share your setup with</p>
+        <h2 className='text-4xl font-bold text-[#3A3A3A]'>#FurniroFurniture</h2>
+      </div>
+      <div>
+        <Gallery />
+      </div>
     </div>
     </>
   );
