@@ -57,7 +57,7 @@ const Shop = () => {
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-8 mt-10">
         {currentCards.map((card) => (
-          <Card key={card.id} image={card.image} />
+          <Card key={card.id} id={card.id} image={card.image} />
         ))}
       </div>
 

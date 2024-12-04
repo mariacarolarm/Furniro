@@ -17,30 +17,39 @@ import Gallery from './Gallery'
 
 const cards = [
   {
+    id: 1,
     image: grifo,
   },
   {
+    id: 2,
     image: leviosa,
   },
   {
+    id: 3,
     image: lolito,
   },
   {
+    id: 4,
     image: muggo,
   },
   {
+    id: 5,
     image: pingky,
   },
   {
+    id: 6,
     image: potty,
   },
   {
+    id: 7,
     image: respira,
   },
   {
+    id: 8,
     image: syltherine,
   },
-]
+];
+
 
 const Home = () => {
   return (

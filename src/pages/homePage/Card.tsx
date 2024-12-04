@@ -1,12 +1,22 @@
+import { useNavigate } from "react-router-dom";
 import { CardProps } from "./types";
 import share from '../../assets/images/cards/share.png';
 import compare from '../../assets/images/cards/compare.png';
 import like from '../../assets/images/cards/like.png';
 
 
-const Card = ({image}: CardProps) => {
+const Card = ({id, image}: CardProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/product/${id}`);
+  };
+
   return (
-    <div className="relative group overflow-hidden">
+    <div 
+    className="relative group overflow-hidden"
+    onClick={handleClick}
+    >
       <img src={image} alt="" className="w-full object-cover" />
       <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center">
         <button className="bg-white text-[#B88E2F] text-base font-semibold w-48 h-12 px-4 py-2 mb-4 hover:bg-yellow-100">
