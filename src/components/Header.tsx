@@ -1,6 +1,7 @@
 import logo from "../assets/images/header/furniroLogo.png";
 import login from "../assets/images/header/login.png";
 import cart from "../assets/images/header/shoppingCart.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -19,7 +20,9 @@ const Header = () => {
       </div>
       <div className="flex items-center gap-2 mr-9">
         <img src={login} alt="Login Icon" className="w-5.5 h-4" />
+        <Link to="/shoppingCart">
         <img src={cart} alt="Cart Icon" className="w-5 h-5" />
+        </Link>
       </div>
     </header>
   );

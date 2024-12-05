@@ -12,7 +12,7 @@ import respira from '../../assets/images/furniture/Respira.png'
 import syltherine from '../../assets/images/furniture/Syltherine.png'
 import Card from './Card'
 import image from '../../assets/images/home/Image.png'
-import Carousel from './Carousel'
+// import Carousel from './Carousel'
 import Gallery from './Gallery'
 
 const cards = [
@@ -106,7 +106,7 @@ const Home = () => {
         <img src={image} alt="" />
       </div>
       <div>
-        <Carousel />
+        {/*<Carousel />*/}
       </div>
     </div>
     <div>

@@ -4,49 +4,49 @@
       "id": 1,
       "name": "Grifo",
       "price": 1500000,
-      "description": "Night lamp"
+      "description": "A sleek night lamp that brings elegance and warmth to your space."
     },
     {
       "id": 2,
       "name": "Leviosa",
       "price": 2500000,
-      "description": "Stylish cafe chair"
+      "description": "A modern cafe chair with a stylish design, perfect for chic spaces."
     },
     {
       "id": 3,
       "name": "Lolito",
       "price": 7000000,
-      "description": "Luxury big sofa"
+      "description": "An opulent sofa offering unmatched comfort and sophistication."
     },
     {
       "id": 4,
       "name": "Muggo",
       "price": 150000,
-      "description": "Small mug"
+      "description": "A compact, ergonomic mug designed for your everyday sips."
     },
     {
       "id": 5,
       "name": "Pingky",
       "price": 7000000,
-      "description": "Cute bed set"
+      "description": "A charming and cozy bed set that transforms your bedroom into a haven."
     },
     {
       "id": 6,
       "name": "Potty",
       "price": 500000,
-      "description": "Minimalist flower pot"
+      "description": "A minimalist flower pot that elevates your greenery with style."
     },
     {
       "id": 7,
       "name": "Respira",
       "price": 500000,
-      "description": "Outdoor table and stool"
+      "description": "A versatile outdoor table and stool set for relaxing and social moments."
     },
     {
       "id": 8,
       "name": "Syltherine",
       "price": 2500000,
-      "description": "Stylish cafe chair"
+      "description": "A contemporary cafe chair that combines functionality with flair."
     }
   ]
 }

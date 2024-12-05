@@ -16,6 +16,7 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
       <Footer />
     </BrowserRouter>
