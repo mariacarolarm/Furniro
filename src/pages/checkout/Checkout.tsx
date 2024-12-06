@@ -1,13 +1,17 @@
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from "../../redux/store";
 import checkout from '../../assets/images/leads/checkout.png'
 import info from '../../assets/images/leads/info.png'
 import { Product } from '../shoppingCart/types';
+import { useAuth } from '@clerk/clerk-react';
 
 
 const Checkout = () => {
+  const { signOut } = useAuth();
   const cartItems = useSelector((state: RootState) => state.cart.items);
+  const navigate = useNavigate();
 
   const [products, setProducts] = useState<Product[]>([]);
   const [formData, setFormData] = useState({
@@ -71,6 +75,15 @@ const Checkout = () => {
     const product = products.find((product) => product.id === item.id);
     return product ? sum + product.price * item.quantity : sum;
   }, 0);
+
+  const handlePlaceOrder = async () => {
+    try {
+      await signOut();
+      navigate('/');
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+  };
   
   return (
     <>
@@ -228,7 +241,7 @@ const Checkout = () => {
           <input type="checkbox" className='mt-4 appearance-none rounded-full checked:bg-black w-4 h-4 mr-3 border border-gray-300 cursor-pointer checked:border-2 checked:border-black' /> Cash on delivery
           <p className='mt-4 text-sm'>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <span className='font-semibold'>privacy policy.</span></p>
         </div>
-        <button className='w-80 h-16 border border-black rounded-2xl mt-10'>Place Order</button>
+        <button onClick={handlePlaceOrder} className='w-80 h-16 border border-black rounded-2xl mt-10'>Place Order</button>
       </div>
     </div>
     <img src={info} alt="" className='mt-24 -mb-12' />

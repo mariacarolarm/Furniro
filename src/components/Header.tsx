@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { SignInButton } from "@clerk/clerk-react";
 import logo from "../assets/images/header/furniroLogo.png";
 import login from "../assets/images/header/login.png";
 import cart from "../assets/images/header/shoppingCart.png";
@@ -24,7 +25,11 @@ const Header = () => {
         </nav>
       </div>
       <div className="flex items-center gap-2 mr-9">
+        <SignInButton>
+          <button>
         <img src={login} alt="Login Icon" className="w-5.5 h-4" />
+          </button>
+        </SignInButton>
         <div className="relative">
           <img
             src={cart}
