@@ -120,7 +120,12 @@ const Cart = () => {
         </tbody>
       </table>
       <div className="flex justify-center">
-        <button className="w-56 h-16 border border-black rounded-xl">Check Out</button>
+        <button 
+        className="w-56 h-16 border border-black rounded-xl"
+        onClick={() => window.location.href = '/checkout'}
+        >
+          Check Out
+        </button>
       </div>
       </div>
       </div>

@@ -1,9 +1,14 @@
+import { useState } from "react";
 import logo from "../assets/images/header/furniroLogo.png";
 import login from "../assets/images/header/login.png";
 import cart from "../assets/images/header/shoppingCart.png";
-import { Link } from "react-router-dom";
+import CartOverlay from "../pages/shoppingCart/CartOverlay";
 
 const Header = () => {
+  const [isOverlayVisible, setOverlayVisible] = useState(false);
+
+  const toggleOverlay = () => setOverlayVisible((prev) => !prev);
+
   return (
     <header className="w-full h-24 flex items-center justify-between">
       <div className="ml-8 flex items-center">
@@ -20,12 +25,22 @@ const Header = () => {
       </div>
       <div className="flex items-center gap-2 mr-9">
         <img src={login} alt="Login Icon" className="w-5.5 h-4" />
-        <Link to="/shoppingCart">
-        <img src={cart} alt="Cart Icon" className="w-5 h-5" />
-        </Link>
+        <div className="relative">
+          <img
+            src={cart}
+            alt="Cart Icon"
+            className="w-5 h-5 cursor-pointer"
+            onClick={toggleOverlay}
+          />
+          {isOverlayVisible && (
+            <div className="absolute right-0 mt-6">
+              <CartOverlay handleClose={() => setOverlayVisible(false)} />
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
-}
+};
 
 export default Header;
