@@ -2,8 +2,17 @@ import facebook from '../assets/images/footer/facebook.png';
 import instagram from '../assets/images/footer/instagram.png';
 import twitter from '../assets/images/footer/twitter.png';
 import linkedIn from '../assets/images/footer/linkedIn.png';
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import { footerSchema } from '../validation/validationSchemas';
 
 const Footer = () => {
+  const initialValues = { email: "" };
+
+  const onSubmit = (values: { email: string }, { resetForm }: { resetForm: () => void }) => {
+    console.log("Newsletter Form Submitted", values);
+    resetForm();
+  };
+
   return (
     <footer className="w-full mt-12 border-t-2">
       <div className='ml-24 flex h-80 justify-between mr-24 mt-12'>
@@ -45,8 +54,37 @@ const Footer = () => {
       </div>
       <div>
         <h3 className='text-base font-medium text-[#9F9F9F] mb-8'>Newsletter</h3>
-        <input type="email" placeholder='Enter Your Email Address' className='w-48 border-b-2 border-black focus:outline-none mr-3' />
-        <button className='border-b-2 border-black focus:outline-none'>SUBSCRIBE</button>
+        <Formik
+            initialValues={initialValues}
+            validationSchema={footerSchema}
+            onSubmit={onSubmit}
+          >
+            {() => (
+              <Form className="flex items-center">
+                <div className="flex flex-col relative">
+                  <Field
+                    type="email"
+                    name="email"
+                    placeholder="Enter Your Email Address"
+                    className="w-52 border-b-2 border-black focus:outline-none mr-3"
+                  />
+                  <div className="absolute -bottom-5 left-0 text-red-500 text-sm h-5">
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="text-red-500 text-sm"
+                  />
+                </div>
+                </div>
+                <button
+                  type="submit"
+                  className="border-b-2 border-black focus:outline-none w-20"
+                >
+                  SUBSCRIBE
+                </button>
+              </Form>
+            )}
+          </Formik>
       </div>
       </div>
       <div className='border-t ml-24 mr-24'>

@@ -6,6 +6,8 @@ import checkout from '../../assets/images/leads/checkout.png'
 import info from '../../assets/images/leads/info.png'
 import { Product } from '../shoppingCart/types';
 import { useAuth } from '@clerk/clerk-react';
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import { checkoutSchema } from "../../validation/validationSchemas";
 
 
 const Checkout = () => {
@@ -14,18 +16,6 @@ const Checkout = () => {
   const navigate = useNavigate();
 
   const [products, setProducts] = useState<Product[]>([]);
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    companyName: "",
-    zipCode: "",
-    country: "",
-    streetAddress: "",
-    townCity: "",
-    province: "",
-    addonAddress: "",
-    email: "",
-  });
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -49,26 +39,38 @@ const Checkout = () => {
     fetchProducts();
   }, [cartItems]);
 
-  const handleZipCodeChange = async (zipCode: string) => {
-    setFormData((prev) => ({ ...prev, zipCode }));
+  const initialValues = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    zipCode: "",
+    country: "",
+    streetAddress: "",
+    townCity: "",
+    province: "",
+    addonAddress: "",
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const fetchAddress = async (zipCode: string, setFieldValue: any) => {
     if (zipCode.length === 8) {
       try {
         const response = await fetch(`https://viacep.com.br/ws/${zipCode}/json/`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch address");
-        }
+        if (!response.ok) throw new Error("Failed to fetch address");
         const data = await response.json();
-        setFormData((prev) => ({
-          ...prev,
-          streetAddress: data.logradouro || "",
-          addonAddress: data.complemento || "",
-          townCity: data.localidade || "",
-          province: data.uf || "",
-        }));
+
+        setFieldValue("streetAddress", data.logradouro || "");
+        setFieldValue("addonAddress", data.complemento || "");
+        setFieldValue("townCity", data.localidade || "");
+        setFieldValue("province", data.uf || "");
       } catch (error) {
         console.error("Error fetching address:", error);
       }
     }
+  };
+
+  const onSubmit = (values: typeof initialValues) => {
+    console.log("Form Submitted:", values);
   };
 
   const total = cartItems.reduce((sum, item) => {
@@ -91,42 +93,56 @@ const Checkout = () => {
     <div className='flex min-h-screen justify-center w-11/12 gap-16 m-16'>
     <div>
     <h2 className='text-4xl font-semibold mb-8'>Billing details</h2>
-    <form action="" className="space-y-4 w-96">
+    <Formik
+      initialValues={initialValues}
+      validationSchema={checkoutSchema}
+      onSubmit={onSubmit}
+    >
+      {({ setFieldValue }) => (
+      <Form className="space-y-4 w-96">
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label htmlFor="first-name" className="block text-sm font-medium mb-4">First Name</label>
-          <input
-            id="first-name"
+          <Field
+            name="firstName"
             type="text"
             className="w-full px-3 py-4 border border-[#9F9F9F] rounded-lg"
           />
+          <ErrorMessage name="firstName" component="p" className="text-sm text-red-500" />
         </div>
         <div>
           <label htmlFor="last-name" className="block text-sm font-medium mb-4">Last Name</label>
-          <input
-            id="last-name"
+          <Field
+            name="lastName"
             type="text"
             className="w-full px-3 py-4 border border-[#9F9F9F] rounded-lg"
           />
+          <ErrorMessage name="lastName" component="p" className="text-sm text-red-500" />
         </div>
       </div>
       <div>
         <label htmlFor="company-name" className="block text-sm font-medium mb-4">Company Name (Optional)</label>
-        <input
-          id="company-name"
+        <Field
+          name="companyName"
           type="text"
           className="w-full px-3 py-4 border border-[#9F9F9F] rounded-lg"
         />
+        <ErrorMessage name="companyName" component="p" className="text-sm text-red-500" />
       </div>
       <div>
         <label htmlFor="zip-code" className="block text-sm font-medium mb-4">ZIP code</label>
-        <input
+        <Field
               id="zip-code"
+              name="zipCode"
               type="text"
-              value={formData.zipCode}
-              onChange={(e) => handleZipCodeChange(e.target.value)}
               className="w-full px-3 py-4 border border-[#9F9F9F] rounded-lg"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                const { value } = e.target;
+                setFieldValue("zipCode", value);
+                fetchAddress(value, setFieldValue);
+              }}
             />
+            <ErrorMessage name="zipCode" component="div" className="text-red-500 text-sm" />
       </div>
       <div>
         <label htmlFor="country" className="block text-sm font-medium mb-4">Country / Region</label>
@@ -138,59 +154,52 @@ const Checkout = () => {
       </div>
       <div>
         <label htmlFor="street-address" className="block text-sm font-medium mb-4">Street Address</label>
-        <input
+        <Field
               id="street-address"
+              name="streetAddress"
               type="text"
-              value={formData.streetAddress}
-              onChange={(e) =>
-                setFormData({ ...formData, streetAddress: e.target.value })
-              }
               className="w-full px-3 py-4 border border-[#9F9F9F] rounded-lg"
             />
+        <ErrorMessage name="streetAddress" component="div" className="text-red-500 text-sm" />
       </div>
       <div>
         <label htmlFor="town-city" className="block text-sm font-medium mb-4">Town / City</label>
-        <input
+        <Field
               id="town-city"
+              name="townCity"
               type="text"
-              value={formData.townCity}
-              onChange={(e) =>
-                setFormData({ ...formData, townCity: e.target.value })
-              }
               className="w-full px-3 py-4 border border-[#9F9F9F] rounded-lg"
             />
+        <ErrorMessage name="townCity" component="div" className="text-red-500 text-sm" />
       </div>
       <div>
         <label htmlFor="province" className="block text-sm font-medium mb-4">Province</label>
-        <input
+        <Field
               id="province"
+              name="province"
               type="text"
-              value={formData.province}
-              onChange={(e) =>
-                setFormData({ ...formData, province: e.target.value })
-              }
               className="w-full px-3 py-4 border border-[#9F9F9F] rounded-lg"
             />
+        <ErrorMessage name="province" component="div" className="text-red-500 text-sm" />
       </div>
       <div>
         <label htmlFor="addon-address" className="block text-sm font-medium mb-4">Add-on address</label>
-        <input
+        <Field
               id="addon-address"
+              name="addonAddress"
               type="text"
-              value={formData.addonAddress}
-              onChange={(e) =>
-                setFormData({ ...formData, addonAddress: e.target.value })
-              }
               className="w-full px-3 py-4 border border-[#9F9F9F] rounded-lg"
             />
+        <ErrorMessage name="addonAddress" component="div" className="text-red-500 text-sm" />
       </div>
       <div>
         <label htmlFor="email" className="block text-sm font-medium mb-4">Email address</label>
-        <input
-          id="email"
+        <Field
+          name="email"
           type="email"
           className="w-full px-3 py-4 border border-[#9F9F9F] rounded-lg"
         />
+        <ErrorMessage name="email" component="p" className="text-sm text-red-500" />
       </div>
       <div>
         <input
@@ -199,7 +208,9 @@ const Checkout = () => {
           className="w-full px-3 py-4 border border-[#9F9F9F] rounded-lg"
         />
       </div>
-      </form>
+      </Form>
+      )}
+      </Formik>
       </div>
       <div className='w-96'>
       <div className="p-4">

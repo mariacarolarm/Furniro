@@ -3,8 +3,22 @@ import location from '../../assets/images/contact/location.png'
 import phone from '../../assets/images/contact/phone.png'
 import clock from '../../assets/images/contact/clock.png'
 import info from '../../assets/images/leads/info.png'
+import { checkoutSchema } from '../../validation/validationSchemas'
+import { Formik, Field, Form, ErrorMessage } from "formik";
 
 const Contact = () => {
+  const initialValues = {
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  };
+
+  const onSubmit = (values: { name: string; email: string; subject: string; message: string }, { resetForm }: { resetForm: () => void }) => {
+    console.log("Form Submitted", values);
+    resetForm();
+  };
+
   return (
     <>
     <img src={contact} alt="" />
@@ -47,50 +61,74 @@ const Contact = () => {
       </div>
       </div>
       <div className="w-full max-w-md mx-auto">
-      <form action="" className="flex flex-col gap-6">
-        <div className="flex flex-col">
-          <label htmlFor="name" className="text-base font-medium mb-3">Your name</label>
-          <input
-            type="text"
-            id="name"
-            placeholder='Abc'
-            className="mt-1 p-2 h-16 border border-[#9F9F9F] rounded-lg focus:outline-none"
-          />
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="email" className="text-base font-medium mb-3">Email address</label>
-          <input
-            type="email"
-            id="email"
-            placeholder='Abc@def.com'
-            className="mt-1 p-2 h-16 border border-[#9F9F9F] rounded-lg focus:outline-none"
-          />
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="subject" className="text-base font-medium mb-3">Subject</label>
-          <input
-            type="text"
-            id="subject"
-            placeholder='This is an optional'
-            className="mt-1 p-2 h-16 border border-[#9F9F9F] rounded-lg focus:outline-none"
-          />
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="message" className="text-base font-medium mb-3">Message</label>
-          <textarea
-            id="message"
-            rows={5}
-            placeholder="Hi! I'd like to ask about"
-            className="mt-1 p-2 h-28 border border-[#9F9F9F] rounded-lg focus:outline-none"
-          ></textarea>
-        </div>
-        <button
-          type="submit"
-          className="h-14 w-60 bg-[#B88E2F] text-white font-normal text-base rounded hover:bg-yellow-700 focus:outline-none"
-        >
-          Submit
-        </button>
-      </form>
+      <Formik
+            initialValues={initialValues}
+            validationSchema={checkoutSchema}
+            onSubmit={onSubmit}
+          >
+            {() => (
+              <Form className="flex flex-col gap-6">
+                <div className="flex flex-col">
+                  <label htmlFor="name" className="text-base font-medium mb-3">
+                    Your name
+                  </label>
+                  <Field
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Abc"
+                    className="mt-1 p-2 h-16 border border-[#9F9F9F] rounded-lg focus:outline-none"
+                  />
+                  <ErrorMessage name="name" component="div" className="text-red-500 text-sm" />
+                </div>
+                <div className="flex flex-col">
+                  <label htmlFor="email" className="text-base font-medium mb-3">
+                    Email address
+                  </label>
+                  <Field
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Abc@def.com"
+                    className="mt-1 p-2 h-16 border border-[#9F9F9F] rounded-lg focus:outline-none"
+                  />
+                  <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
+                </div>
+                <div className="flex flex-col">
+                  <label htmlFor="subject" className="text-base font-medium mb-3">
+                    Subject
+                  </label>
+                  <Field
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    placeholder="This is optional"
+                    className="mt-1 p-2 h-16 border border-[#9F9F9F] rounded-lg focus:outline-none"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <label htmlFor="message" className="text-base font-medium mb-3">
+                    Message
+                  </label>
+                  <Field
+                    as="textarea"
+                    id="message"
+                    name="message"
+                    rows={5}
+                    placeholder="Hi! I'd like to ask about"
+                    className="mt-1 p-2 h-28 border border-[#9F9F9F] rounded-lg focus:outline-none"
+                  />
+                  <ErrorMessage name="message" component="div" className="text-red-500 text-sm" />
+                </div>
+                <button
+                  type="submit"
+                  className="h-14 w-60 bg-[#B88E2F] text-white font-normal text-base rounded hover:bg-yellow-700 focus:outline-none"
+                >
+                  Submit
+                </button>
+              </Form>
+            )}
+          </Formik>
       </div>
     </div>
     <img src={info} alt="" />

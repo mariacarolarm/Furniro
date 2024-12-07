@@ -63,7 +63,7 @@ const Cart = () => {
     <>
       <img src={cart} alt="" />
       <div className="flex mt-10 justify-center">
-      <div className="mt-10">
+      <div className="mt-10 mr-10">
       <div className="grid grid-cols-6 text-center bg-[#FAF3EA] font-bold py-2 px-4">
         <span></span>
         <span className="text-sm font-medium">Product</span>
@@ -79,15 +79,15 @@ const Cart = () => {
     return (
       <div
         key={product.id}
-        className="grid grid-cols-6 text-center items-center gap-4 border-b border-gray-300 py-4"
+        className="grid grid-cols-6 text-center items-center gap-4 py-4"
       >
         <span></span>
         <span className="text-sm font-normal text-[#9F9F9F]">{product.name}</span>
         <span className="text-sm font-normal text-[#9F9F9F]">Rs. {product.price}</span>
-        <div className="flex items-center justify-center w-24 mx-auto border border-gray-300 rounded-lg">
+        <div className="flex items-center justify-center w-20 mx-auto border border-[#9F9F9F] rounded-lg">
           <button
             type="button"
-            className="px-3 py-1 rounded-l-lg"
+            className="px-1 py-1 rounded-l-lg"
             onClick={() => handleDecrement(item.id)}
           >
             -
@@ -100,7 +100,7 @@ const Cart = () => {
           />
           <button
             type="button"
-            className="px-3 py-1 rounded-r-lg"
+            className="px-1 py-1 rounded-r-lg"
             onClick={() => handleIncrement(item.id)}
           >
             +
