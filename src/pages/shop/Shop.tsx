@@ -48,11 +48,19 @@ const Shop = () => {
       <img src={grid} alt="" />
       <img src={view} alt="" />
       </div>
-      <div>
+      <div className='flex items-center gap-3'>
         <label htmlFor="">Show</label>
-        <input type="text" className='w-10' />
+        <select name="" id="" className="appearance-none bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300">
+          <option value="">16</option>
+          <option value="">32</option>
+          <option value="">64</option>
+        </select>
         <label htmlFor="">Sort by</label>
-        <input type="text" className='w-24' />
+        <select name="" id="" className="appearance-none bg-white px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300">
+          <option value="">Price: Low to High</option>
+          <option value="">Price: High to Low</option>
+          <option value="">Newest Arrivals</option>
+        </select>
       </div>
     </div>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-8 mt-10">

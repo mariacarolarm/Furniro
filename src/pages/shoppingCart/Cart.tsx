@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { RootState } from "../../redux/store";
-import { removeItem } from "../../redux/cartSlice";
+import { removeItem, incrementQuantity, decrementQuantity } from "../../redux/cartSlice";
 import cart from '../../assets/images/cart/cart.png';
 import { Product } from "./types";
 import trash from '../../assets/images/cart/delete.png';
@@ -42,6 +42,14 @@ const Cart = () => {
 
   if (loading) return <p>Loading cart...</p>;
 
+  const handleIncrement = (id: number) => {
+    dispatch(incrementQuantity(id));
+  };
+
+  const handleDecrement = (id: number) => {
+    dispatch(decrementQuantity(id));
+  };
+
   const getSubtotal = (price: number, quantity: number) => price * quantity;
 
   const formatNumber = (value: number): string => {
@@ -55,45 +63,66 @@ const Cart = () => {
     <>
       <img src={cart} alt="" />
       <div className="flex mt-10 justify-center">
-      <div className="w-3/5 h-16 m-10">
-        <div className="grid grid-cols-6 gap-2 bg-[#FAF3EA] font-bold py-2 px-4">
-          <span></span>
-          <span className="text-sm font-medium">Product</span>
-          <span className="text-sm font-medium">Price</span>
-          <span className="text-sm font-medium">Quantity</span>
-          <span className="text-sm font-medium">Subtotal</span>
-          <span></span>
+      <div className="mt-10">
+      <div className="grid grid-cols-6 text-center bg-[#FAF3EA] font-bold py-2 px-4">
+        <span></span>
+        <span className="text-sm font-medium">Product</span>
+        <span className="text-sm font-medium">Price</span>
+        <span className="text-sm font-medium">Quantity</span>
+        <span className="text-sm font-medium">Subtotal</span>
+        <span></span>
+      </div>
+      {cartItems.map((item) => {
+        const product = products.find((product) => product.id === item.id);
+        if (!product) return null;
+
+    return (
+      <div
+        key={product.id}
+        className="grid grid-cols-6 text-center items-center gap-4 border-b border-gray-300 py-4"
+      >
+        <span></span>
+        <span className="text-sm font-normal text-[#9F9F9F]">{product.name}</span>
+        <span className="text-sm font-normal text-[#9F9F9F]">Rs. {product.price}</span>
+        <div className="flex items-center justify-center w-24 mx-auto border border-gray-300 rounded-lg">
+          <button
+            type="button"
+            className="px-3 py-1 rounded-l-lg"
+            onClick={() => handleDecrement(item.id)}
+          >
+            -
+          </button>
+          <input
+            type="number"
+            className="w-10 text-center focus:outline-none bg-white"
+            value={item.quantity}
+            readOnly
+          />
+          <button
+            type="button"
+            className="px-3 py-1 rounded-r-lg"
+            onClick={() => handleIncrement(item.id)}
+          >
+            +
+          </button>
         </div>
-        <div className="flex flex-col gap-6 mt-6">
-          {cartItems.map((item) => {
-            const product = products.find((product) => product.id === (item.id));
-            if (!product) return null;
-          
-            return (
-              <div
-                key={product.id}
-                className="grid grid-cols-6 gap-6"
-              >
-                <span className=""></span>
-                <span className="text-sm font-normal text-[#9F9F9F]">{product.name}</span>
-                <span className="text-sm font-normal text-[#9F9F9F]">Rs. {product.price}</span>
-                <span className="text-sm font-normal text-[#9F9F9F]">{item.quantity}</span>
-                <span className="text-sm font-normal text-[#9F9F9F]">Rs. {getSubtotal(product.price, item.quantity)}</span>
-                <span className="flex justify-center">
-                  <button
-                    onClick={() => dispatch(removeItem(item.id))}
-                  >
-                    <img src={trash} alt="" className="w-5 h-5" />
-                  </button>
-                </span>
-              </div>
-            );
-          })}
+        <span className="text-sm font-normal text-[#9F9F9F]">
+          Rs. {getSubtotal(product.price, item.quantity)}
+        </span>
+        <span className="flex justify-center">
+          <button
+            onClick={() => dispatch(removeItem(item.id))}
+          >
+            <img src={trash} alt="Remove" className="w-5 h-5" />
+          </button>
+        </span>
         </div>
+          );
+        })}
         </div>
         <div className="bg-[#FAF3EA] w-96 h-96 p-10">
-      <h2 className="text-center text-3xl font-semibold mb-10">Cart Totals</h2>
-      <table className="mb-10 w-full">
+        <h2 className="text-center text-3xl font-semibold mb-10">Cart Totals</h2>
+        <table className="mb-10 w-full">
         <tbody>
           <tr className="flex justify-between items-center mb-4">
             <td className="text-sm font-medium">Subtotal</td>
