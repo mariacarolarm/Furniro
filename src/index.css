@@ -14,3 +14,14 @@
     @apply font-poppins;
   }
 }
+
+.swiper-button-next {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: transparent !important;
+}
+
+.swiper-button-next::after {
+  display: none !important;
+}

@@ -1,50 +1,115 @@
-# React + TypeScript + Vite
+# 🛋️ Furniro E-Commerce Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto de aplicação web para uma loja de móveis, desenvolvido com foco em funcionalidade, responsividade e integração com APIs externas. A aplicação oferece páginas para navegação, seleção e compra de produtos, além de recursos como autenticação e gerenciamento de estado com **Redux**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Funcionalidades
 
-## Expanding the ESLint configuration
+### Página Inicial (Home)
+- **Carrossel de Inspirações**:
+  - Exibição de imagens de ambientes decorados, com setas de navegação personalizadas e pontos de paginação.
+  - Implementado com **SwiperJS**, ajustando-se dinamicamente para diferentes tamanhos de tela.
+- **Seção de Produtos**:
+  - Exibição de produtos organizados em grid.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Header
+- **Autenticação**:
+  - Botão para login usando **Clerk**.
+- **Overlay do Carrinho**:
+  - Exibe os produtos adicionados ao carrinho, subtotal, total, e botões para acessar a página do Carrinho ou do Checkout.
 
-- Configure the top-level `parserOptions` property like this:
+### Página de Produtos (Shop)
+- **Cards de Produtos**:
+  - Mostra os produtos disponíveis, cada um com uma imagem, nome, e botão "Add to Cart".
+  - Ao passar o mouse no botão, ele é destacado.
+- **Paginação**:
+  - Implementada para dividir os produtos em múltiplas páginas.
+- **Gerenciamento de Carrinho**:
+  - Ao clicar em "Add to Cart", o produto é adicionado ao estado global gerenciado pelo **Redux**.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Página do Carrinho
+- **Resumo do Carrinho**:
+  - Lista de produtos adicionados, com subtotal e total calculados.
+  - Botão "Go to Checkout" para avançar para o processo de pagamento.
+
+### Página de Checkout (Rota Protegida)
+- **Proteção por Autenticação**:
+  - Somente usuários autenticados podem acessar.
+- **Autopreenchimento do Endereço**:
+  - Integração com a API **ViaCEP** para preenchimento automático de informações de endereço com base no CEP.
+- **Finalização do Pedido**:
+  - Ao clicar em "Place Order", o usuário é deslogado automaticamente e redirecionado para a página inicial.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **React**: Biblioteca para construção de interfaces de usuário.
+- **Redux**: Gerenciamento de estado global.
+- **Redux Toolkit**: Simplificação do uso do Redux.
+- **TailwindCSS**: Framework CSS para estilização responsiva.
+- **SwiperJS**: Biblioteca para criação de carrosséis responsivos.
+- **Clerk**: Serviço para autenticação de usuários.
+- **Json Server**: Armazenamento do banco de dados dos produtos.
+- **Vite**: Ferramenta de build e desenvolvimento rápido.
+- **TypeScript**: Superconjunto do JavaScript com tipagem estática.
+
+---
+
+## Como Executar o Projeto
+Clone o repositório:
+
+```bash
+git clone https://github.com/mariacarolarm/Furniro
+cd desafio3
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Instale as dependências: Certifique-se de ter o Node.js instalado.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm install
 ```
+
+## Configuração de Ambiente: Crie um arquivo .env na raiz do projeto e configure as seguintes variáveis:
+
+```bash
+VITE_CLERK_FRONTEND_API=<sua-chave-do-clerk>
+```
+
+## Inicie o json server:
+```bash
+npm run server
+```
+
+## Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+### Acesse no navegador: O projeto estará disponível em http://localhost:3000.
+
+## ⚙️ Configurações Extras
+Autopreenchimento de Endereço
+A aplicação usa a API ViaCEP para buscar informações com base no CEP.
+Certifique-se de que as requisições à API estão funcionando no seu ambiente.
+
+## Estilização Customizada
+O projeto utiliza TailwindCSS. Ajustes podem ser feitos no arquivo tailwind.config.js:
+
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+
+## 📦 Recursos Futuramente Adicionáveis
+Método de Pagamento: Integração com um gateway de pagamento.
+Histórico de Pedidos: Área para que o usuário visualize pedidos anteriores.
+
+## ✨ Contribuições
+Contribuições são bem-vindas! Abra uma issue ou envie um pull request para melhorias no projeto.
+

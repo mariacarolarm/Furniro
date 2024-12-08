@@ -3,6 +3,7 @@ import { Navigation} from 'swiper/modules';
 import { Pagination } from 'swiper/modules';
 
 import rectangle from '../../assets/images/home/Rectangle.png';
+import rightArrow from '../../assets/images/home/rightArrow.png';
 
 const Carousel = () => {
   const slides = [
@@ -52,7 +53,6 @@ const Carousel = () => {
         slidesPerView={1}
         navigation={{
           nextEl: ".swiper-button-next",
-          prevEl: null,
         }}
         pagination={{ clickable: true }}
         loop={true}
@@ -68,6 +68,16 @@ const Carousel = () => {
             </div>
           </SwiperSlide>
         ))}
+       <button
+        className="swiper-button-next top-1/2 right-0"
+        aria-label="Next Slide"
+      >
+        <img
+          src={rightArrow}
+          alt="Next Slide"
+          className="w-48 h-24 object-contain"
+        />
+      </button>
       </Swiper>
     </div>
   );
