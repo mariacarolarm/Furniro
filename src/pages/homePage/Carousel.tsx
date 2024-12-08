@@ -1,5 +1,8 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import rectangle from '../../assets/images/home/Rectangle.png'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation} from 'swiper/modules';
+import { Pagination } from 'swiper/modules';
+
+import rectangle from '../../assets/images/home/Rectangle.png';
 
 const Carousel = () => {
   const slides = [
@@ -21,28 +24,47 @@ const Carousel = () => {
       title: "Living Luxury",
       subtitle: "03 — Living Room",
     },
+    {
+      id: 4,
+      image: rectangle,
+      title: "Inner Peace",
+      subtitle: "01 — Bed Room",
+    },
+    {
+      id: 5,
+      image: rectangle,
+      title: "Cozy Dining",
+      subtitle: "02 — Dining Room",
+    },
+    {
+      id: 6,
+      image: rectangle,
+      title: "Living Luxury",
+      subtitle: "03 — Living Room",
+    }
   ];
 
   return (
-    <div className="">
+    <div className="w-full max-w-lg">
       <Swiper
-        spaceBetween={30}
+        modules={[Navigation, Pagination]}
+        spaceBetween={20}
         slidesPerView={1}
-        navigation
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: null,
+        }}
         pagination={{ clickable: true }}
-        className="w-80"
+        loop={true}
       >
-        {slides.map((slide) => (
-          <SwiperSlide key={slide.id} className="">
-            <img
-              src={slide.image}
-              alt={slide.title}
-              className="w-full h-96 object-cover ml-5"
-            />
-            <div className="">
-              <button className="mt-4 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
-                →
-              </button>
+        {slides.map((room) => (
+          <SwiperSlide key={room.id}>
+            <div className="flex justify-center items-center">
+              <img
+                src={room.image}
+                alt={`Room ${room.id}`}
+                className="w-full h-auto max-w-[300px]"
+              />
             </div>
           </SwiperSlide>
         ))}

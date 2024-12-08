@@ -12,7 +12,7 @@ import respira from '../../assets/images/furniture/Respira.png'
 import syltherine from '../../assets/images/furniture/Syltherine.png'
 import Card from './Card'
 import image from '../../assets/images/home/Image.png'
-// import Carousel from './Carousel'
+import Carousel from './Carousel'
 import Gallery from './Gallery'
 
 const cards = [
@@ -96,25 +96,25 @@ const Home = () => {
         <button className='w-60 h-16 bg-white text-[#B88E2F] font-semibold border-2 border-[#B88E2F]'>Show More</button>
       </div>
     </div>
-    <div className='bg-[#FAF3EA] w-full h-3/5 flex justify-center items-center gap-10'>
-      <div className='w-2/6 mt-56'>
-        <h1 className='text-4xl font-bold mb-5'>50+ Beautiful rooms inspiration</h1>
-        <p className='font-medium text-base text-[#616161] mb-5'>Our designer already made a lot of beautiful prototipe of rooms that inspire you</p>
-        <button className='w-44 h-12 bg-[#B88E2F] text-white'>Explore More</button>
-      </div>
-      <div>
-        <img src={image} alt="" />
-      </div>
-      <div>
-        {/*<Carousel />*/}
+    <div>
+      <div className="bg-[#FAF3EA] flex flex-col lg:flex-row items-center gap-10 p-10">
+        <div className="w-full lg:w-1/3">
+          <h1 className="text-4xl font-bold mb-5">50+ Beautiful rooms inspiration</h1>
+          <p className="font-medium text-base text-[#616161] mb-5">
+            Our designer already made a lot of beautiful prototypes of rooms to inspire you.
+          </p>
+          <button className="w-44 h-12 bg-[#B88E2F] text-white">Explore More</button>
+        </div>
+        <div className="w-full lg:w-1/3 flex justify-center">
+          <img src={image} alt="Room inspiration" className="w-full max-w-[400px] h-auto" />
+        </div>
+        <div className="w-full lg:w-1/3 flex justify-center">
+          <Carousel />
+        </div>
       </div>
     </div>
     <div>
-      <div className='text-center mt-10'>
-        <p className='text-xl font-semibold text-[#616161]'>Share your setup with</p>
-        <h2 className='text-4xl font-bold text-[#3A3A3A]'>#FurniroFurniture</h2>
-      </div>
-      <div>
+      <div className='mt-12'>
         <Gallery />
       </div>
     </div>
