@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "json-server --watch src/database/db.json --port 5000"
+    "server": "json-server --watch src/database/db.json --port 5000",
+    "proxy": "http://localhost:5000"
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.17.2",
