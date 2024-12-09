@@ -22,7 +22,7 @@ const Checkout = () => {
       try {
         const responses = await Promise.all(
           cartItems.map(item =>
-            fetch(`http://localhost:5000/products/${item.id}`)
+            fetch(`http://ec2-3-135-188-215.us-east-2.compute.amazonaws.com:5000/products/${item.id}`)
             .then(res => res.json())
             .then((product) => ({
               ...product,
