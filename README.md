@@ -91,13 +91,14 @@ npm run dev
 ### Acesse no navegador: O projeto estará disponível em http://localhost:3000.
 
 ## ⚙️ Configurações Extras
-Autopreenchimento de Endereço
+Autopreenchimento de endereço.
 A aplicação usa a API ViaCEP para buscar informações com base no CEP.
 Certifique-se de que as requisições à API estão funcionando no seu ambiente.
 
 ## Estilização Customizada
 O projeto utiliza TailwindCSS. Ajustes podem ser feitos no arquivo tailwind.config.js:
 
+```javascript
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
@@ -105,6 +106,7 @@ module.exports = {
   },
   plugins: [],
 };
+```
 
 ## 📦 Recursos Futuramente Adicionáveis
 Método de Pagamento: Integração com um gateway de pagamento.
