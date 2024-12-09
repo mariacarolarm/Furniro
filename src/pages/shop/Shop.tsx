@@ -23,22 +23,6 @@ const cardImages = [
   { image: potty, price: 500000, id: 6 },
   { image: respira, price: 500000, id: 7 },
   { image: syltherine, price: 2500000, id: 8 },
-  { image: grifo, price: 1500000, id: 9 },
-  { image: leviosa, price: 2500000, id: 10 },
-  { image: lolito, price: 7000000, id: 11 },
-  { image: muggo, price: 150000, id: 12 },
-  { image: pingky, price: 7000000, id: 13 },
-  { image: potty, price: 500000, id: 14 },
-  { image: respira, price: 500000, id: 15 },
-  { image: syltherine, price: 2500000, id: 16 },
-  { image: grifo, price: 1500000, id: 17 },
-  { image: leviosa, price: 2500000, id: 18 },
-  { image: lolito, price: 7000000, id: 19 },
-  { image: muggo, price: 150000, id: 20 },
-  { image: pingky, price: 7000000, id: 21 },
-  { image: potty, price: 500000, id: 22 },
-  { image: respira, price: 500000, id: 23 },
-  { image: syltherine, price: 2500000, id: 24 },
 ];
 
 const Shop = () => {
