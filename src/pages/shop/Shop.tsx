@@ -1,18 +1,19 @@
 import { useState } from 'react';
-import shop from '../../assets/images/leads/shop.png';
-import filter from '../../assets/images/shop/filter.png';
-import grid from '../../assets/images/shop/grid.png';
-import view from '../../assets/images/shop/view.png';
-import grifo from '../../assets/images/furniture/Grifo.png';
-import leviosa from '../../assets/images/furniture/Leviosa.png';
-import lolito from '../../assets/images/furniture/Lolito.png';
-import muggo from '../../assets/images/furniture/Muggo.png';
-import pingky from '../../assets/images/furniture/Pingky.png';
-import potty from '../../assets/images/furniture/Potty.png';
-import respira from '../../assets/images/furniture/Respira.png';
-import syltherine from '../../assets/images/furniture/Syltherine.png';
-import info from '../../assets/images/leads/info.png';
 import Card from '../homePage/Card';
+
+const shop = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/shop.png';
+const filter = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/filter.png';
+const grid = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/grid.png';
+const view = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/view.png';
+const info = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/info.png';
+const grifo = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Grifo.png'
+const leviosa = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Leviosa.png'
+const lolito = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Lolito.png'
+const muggo = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Muggo.png'
+const pingky = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Pingky.png'
+const potty = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Potty.png'
+const respira = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Respira.png'
+const syltherine = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Syltherine.png'
 
 const cardImages = [
   { image: grifo, price: 1500000, id: 1 },

@@ -1,4 +1,4 @@
-import gallery from '../../assets/images/home/gallery.png'
+const gallery = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/gallery.png'
 
 const Gallery = () => {
   return ( 

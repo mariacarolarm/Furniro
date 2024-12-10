@@ -1,10 +1,11 @@
-import contact from '../../assets/images/leads/contact.png'
-import location from '../../assets/images/contact/location.png'
-import phone from '../../assets/images/contact/phone.png'
-import clock from '../../assets/images/contact/clock.png'
-import info from '../../assets/images/leads/info.png'
 import { checkoutSchema } from '../../validation/validationSchemas'
 import { Formik, Field, Form, ErrorMessage } from "formik";
+
+const contact = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Group+78.png'
+const info = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Frame+161.png'
+const location = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/location.png'
+const phone = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/phone.png'
+const clock = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/clock.png'
 
 const Contact = () => {
   const initialValues = {

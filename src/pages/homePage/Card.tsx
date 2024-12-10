@@ -2,9 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { CardProps } from "./types";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/cartSlice";
-import share from '../../assets/images/cards/share.png';
-import compare from '../../assets/images/cards/compare.png';
-import like from '../../assets/images/cards/like.png';
+
+const share = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/share.png'
+const compare = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/compare.png'
+const like = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/like.png'
 
 const Card = ({id, image}: CardProps) => {
   const navigate = useNavigate();

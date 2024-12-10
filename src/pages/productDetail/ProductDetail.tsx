@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import arrow from '../../assets/images/details/arrow.png'
-import asgaardSofa from '../../assets/images/details/asgaardSofa.png'
-import stars from '../../assets/images/details/stars.png'
-import face from '../../assets/images/details/face.png'
-import linkedin from '../../assets/images/details/linkedin.png'
-import oldTwitter from '../../assets/images/details/oldTwitter.png'
-import description from '../../assets/images/details/description.png'
 import { ProductType } from './types';
+
+const arrow = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/arrow.png'
+const asgaardSofa = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/asgaardSofa.png'
+const stars = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/stars.png'
+const face = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/face.png'
+const linkedin = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/linkedin.png'
+const oldTwitter = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/oldTwitter.png'
+const description = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/description.png'
 
 const ProductDetail = () => {
   const { id } = useParams();

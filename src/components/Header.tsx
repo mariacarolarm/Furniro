@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { SignInButton } from "@clerk/clerk-react";
-import logo from "../assets/images/header/furniroLogo.png";
-import login from "../assets/images/header/login.png";
-import cart from "../assets/images/header/shoppingCart.png";
 import CartOverlay from "../pages/shoppingCart/CartOverlay";
+
+const logo = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/furniroLogo.png'
+const login = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/login.png'
+const cart = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/shoppingCart.png'
 
 const Header = () => {
   const [isOverlayVisible, setOverlayVisible] = useState(false);

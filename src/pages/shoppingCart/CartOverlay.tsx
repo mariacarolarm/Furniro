@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Product } from "./types";
 import { Link } from "react-router-dom";
-import close from '../../assets/images/cart/close.png'
+
+const close = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/close.png'
 
 type CartOverlayProps = {
   handleClose: () => void;
@@ -19,7 +20,7 @@ const CartOverlay = ({ handleClose }: CartOverlayProps) => {
       try {
         const responses = await Promise.all(
           cartItems.map((item) =>
-            fetch(`http://ec2-3-135-188-215.us-east-2.compute.amazonaws.com:5000/api/products/${item.id}`)
+            fetch(`http://localhost:5000/products/${item.id}`)
               .then((res) => res.json())
               .then((product) => ({
                 ...product,

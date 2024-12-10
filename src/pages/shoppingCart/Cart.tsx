@@ -2,10 +2,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { RootState } from "../../redux/store";
 import { removeItem, incrementQuantity, decrementQuantity } from "../../redux/cartSlice";
-import cart from '../../assets/images/cart/cart.png';
 import { Product } from "./types";
-import trash from '../../assets/images/cart/delete.png';
-import info from '../../assets/images/leads/info.png'
+
+const cart = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/cart.png'
+const trash = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/delete.png'
+const info = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Frame+161.png'
 
 const Cart = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -20,7 +21,7 @@ const Cart = () => {
       try {
         const responses = await Promise.all(
           cartItems.map(item =>
-            fetch(`http://ec2-3-135-188-215.us-east-2.compute.amazonaws.com:5000/api/products/${item.id}`)
+            fetch(`http://localhost:5000/products/${item.id}`)
             .then(res => res.json())
             .then((product) => ({
               ...product,

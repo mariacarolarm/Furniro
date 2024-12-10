@@ -1,9 +1,10 @@
-import facebook from '../assets/images/footer/facebook.png';
-import instagram from '../assets/images/footer/instagram.png';
-import twitter from '../assets/images/footer/twitter.png';
-import linkedIn from '../assets/images/footer/linkedIn.png';
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { footerSchema } from '../validation/validationSchemas';
+
+const facebook = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/facebook.png'
+const instagram = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/instagram.png'
+const twitter = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/twitter.png'
+const linkedIn = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/linkedIn.png'
 
 const Footer = () => {
   const initialValues = { email: "" };

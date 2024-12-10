@@ -2,13 +2,13 @@ import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from "../../redux/store";
-import checkout from '../../assets/images/leads/checkout.png'
-import info from '../../assets/images/leads/info.png'
 import { Product } from '../shoppingCart/types';
 import { useAuth } from '@clerk/clerk-react';
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { checkoutSchema } from "../../validation/validationSchemas";
 
+const checkout = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/checkout.png'
+const info = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Frame+161.png'
 
 const Checkout = () => {
   const { signOut } = useAuth();
@@ -22,7 +22,7 @@ const Checkout = () => {
       try {
         const responses = await Promise.all(
           cartItems.map(item =>
-            fetch(`http://ec2-3-135-188-215.us-east-2.compute.amazonaws.com:5000/api/products/${item.id}`)
+            fetch(`http://localhost:5000/products/${item.id}`)
             .then(res => res.json())
             .then((product) => ({
               ...product,
