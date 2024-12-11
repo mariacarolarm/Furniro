@@ -43,7 +43,8 @@ const ProductDetail = () => {
   const handleAddToCart = (event: React.MouseEvent) => {
     event.stopPropagation();
     if (product) {
-      dispatch(addItem({ id: product.id }));      
+    const productId = Number(product.id);
+    dispatch(addItem({ id: productId }));     
     }
   };
 
