@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ProductType } from './types';
+import { addItem } from '../../redux/cartSlice';
+import Spinner from '../../components/Loading';
 
 const arrow = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/arrow.png'
 const asgaardSofa = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/asgaardSofa.png'
@@ -12,21 +15,37 @@ const description = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/descripti
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   const [product, setProduct] = useState<ProductType | null>(null);
   const [value, setValue] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProduct = async () => {
       const response = await fetch(`http://localhost:5000/products/${id}`);
       const data = await response.json();
       setProduct(data);
+      setLoading(false);
     };
 
     fetchProduct();
-  }, [id]);
+  }, [id]);  
 
-  if (!product) return <p>Loading...</p>;
+  if (loading || !product) {
+    return (
+     <>
+      <Spinner />
+     </>
+    );
+  }
+
+  const handleAddToCart = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    if (product) {
+      dispatch(addItem({ id: product.id }));      
+    }
+  };
 
   const increment = () => setValue((prev) => prev + 1);
   const decrement = () => setValue((prev) => (prev > 1 ? prev - 1 : 1));
@@ -104,7 +123,12 @@ const ProductDetail = () => {
           +
         </button>
         </div>
-        <button className='w-56 h-16 border border-black rounded-lg'>Add to Cart</button>
+        <button 
+        className='w-56 h-16 border border-black rounded-lg'
+        onClick={handleAddToCart}
+        >
+          Add to Cart
+        </button>
         </div>
         <div className='border-t'>
         <table className='w-full mt-10'>
