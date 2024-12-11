@@ -10,7 +10,6 @@ const info = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Frame+161.png'
 
 const Cart = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
-  console.log(cartItems);
   
   const dispatch = useDispatch();
 
