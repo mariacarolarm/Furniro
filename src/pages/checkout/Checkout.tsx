@@ -22,7 +22,7 @@ const Checkout = () => {
       try {
         const responses = await Promise.all(
           cartItems.map(item =>
-            fetch(`http://13.59.220.71:5000/products/${item.id}`)
+            fetch(`http://localhost:5000/products/${item.id}`)
             .then(res => res.json())
             .then((product) => ({
               ...product,
