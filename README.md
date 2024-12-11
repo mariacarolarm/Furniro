@@ -77,18 +77,17 @@ npm install
 VITE_CLERK_FRONTEND_API=<sua-chave-do-clerk>
 ```
 
-## Inicie o json server:
-```bash
-npm run server
-```
-
-## Inicie o servidor de desenvolvimento:
+## Inicie a aplicação:
 
 ```bash
-npm run dev
+npm start
 ```
 
 ### Acesse no navegador: O projeto estará disponível em http://localhost:3000.
+
+## 🎥 Demonstração
+
+[Confira a demonstração do projeto Furniro no YouTube](https://youtu.be/C20JOw-mWEY)
 
 ## ⚙️ Configurações Extras
 Autopreenchimento de endereço.
