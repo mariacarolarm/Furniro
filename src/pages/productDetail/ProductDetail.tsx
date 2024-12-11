@@ -44,7 +44,7 @@ const ProductDetail = () => {
     event.stopPropagation();
     if (product) {
     const productId = Number(product.id);
-    dispatch(addItem({ id: productId }));     
+    dispatch(addItem({ id: productId, quantity: value }));     
     }
   };
 

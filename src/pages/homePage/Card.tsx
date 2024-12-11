@@ -17,7 +17,7 @@ const Card = ({id, image}: CardProps) => {
 
   const handleAddToCart = (event: React.MouseEvent) => {
     event.stopPropagation();
-    dispatch(addItem({ id }));
+    dispatch(addItem({ id, quantity: 1 }));
   };
 
   return (
