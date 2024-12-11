@@ -61,7 +61,7 @@ Este é um projeto de aplicação web para uma loja de móveis, desenvolvido com
 Clone o repositório:
 
 ```bash
-git clone https://github.com/mariacarolarm/Furniro
+git clone git@github.com:mariacarolarm/Furniro.git
 cd desafio3
 ```
 
