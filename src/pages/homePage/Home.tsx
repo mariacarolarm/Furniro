@@ -1,20 +1,20 @@
+import { useNavigate } from 'react-router-dom';
 import Card from './Card'
 import Carousel from './Carousel'
 import Gallery from './Gallery'
-
-const hero = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/hero.png'
-const dining = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/sec1.png'
-const living = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/sec2.png'
-const bedroom = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/sec3.png'
-const grifo = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Grifo.png'
-const leviosa = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Leviosa.png'
-const lolito = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Lolito.png'
-const muggo = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Muggo.png'
-const pingky = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Pingky.png'
-const potty = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Potty.png'
-const respira = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Respira.png'
-const syltherine = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Syltherine.png'
-const image = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Image.png'
+import hero from '../../images/hero.png'
+import dining from '../../images/sec1.png'
+import living from '../../images/sec2.png'
+import bedroom from '../../images/sec3.png'
+import grifo from '../../images/Grifo.png'
+import leviosa from '../../images/Leviosa.png'
+import lolito from '../../images/Lolito.png'
+import muggo from '../../images/Muggo.png'
+import pingky from '../../images/Pingky.png'
+import potty from '../../images/Potty.png'
+import respira from '../../images/Respira.png'
+import syltherine from '../../images/Syltherine.png'
+import image from '../../images/Image.png'
 
 const cards = [
   {
@@ -53,6 +53,8 @@ const cards = [
 
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <>
     <div className='relative'>
@@ -61,7 +63,7 @@ const Home = () => {
         <p className='text-lg font-medium'>New Arrival</p>
         <h1 className='text-6xl font-bold text-[#B88E2F] mb-5'>Discover Our New Collection</h1>
         <p className='text-lg font-medium mb-7'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-        <button className='w-56 h-16 bg-[#B88E2F] text-white'>BUY NOW</button>
+        <button onClick={ () => navigate('/shop')} className='w-56 h-16 bg-[#B88E2F] text-white'>BUY NOW</button>
       </div>
     </div>
     <div>

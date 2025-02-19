@@ -1,9 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation} from 'swiper/modules';
 import { Pagination } from 'swiper/modules';
-
-const rectangle = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Rectangle+25.png'
-const rightArrow = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Right+24px.png'
+import rectangle from '../../images/Rectangle25.png'
+import rightArrow from '../../images/rightArrow.png'
 
 const Carousel = () => {
   const slides = [

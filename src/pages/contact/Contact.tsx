@@ -1,11 +1,10 @@
 import { checkoutSchema } from '../../validation/validationSchemas'
 import { Formik, Field, Form, ErrorMessage } from "formik";
-
-const contact = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Group+78.png'
-const info = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Frame+161.png'
-const location = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/location.png'
-const phone = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/phone.png'
-const clock = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/clock.png'
+import contact from '../../images/contact.png';
+import info from '../../images/info.png';
+import location from '../../images/location.png';
+import phone from '../../images/phone.png';
+import clock from '../../images/clock.png';
 
 const Contact = () => {
   const initialValues = {

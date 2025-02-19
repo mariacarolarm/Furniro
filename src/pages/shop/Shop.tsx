@@ -1,19 +1,15 @@
 import { useState } from 'react';
 import Card from '../homePage/Card';
-
-const shop = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/shop.png';
-const filter = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/filter.png';
-const grid = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/grid.png';
-const view = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/view.png';
-const info = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/info.png';
-const grifo = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Grifo.png'
-const leviosa = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Leviosa.png'
-const lolito = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Lolito.png'
-const muggo = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Muggo.png'
-const pingky = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Pingky.png'
-const potty = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Potty.png'
-const respira = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Respira.png'
-const syltherine = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Syltherine.png'
+import shop from '../../images/shop.png';
+import info from '../../images/info.png';
+import grifo from '../../images/Grifo.png';
+import leviosa from '../../images/Leviosa.png';
+import lolito from '../../images/Lolito.png';
+import muggo from '../../images/Muggo.png';
+import pingky from '../../images/Pingky.png';
+import potty from '../../images/Potty.png';
+import respira from '../../images/Respira.png';
+import syltherine from '../../images/Syltherine.png';
 
 const cardImages = [
   { image: grifo, price: 1500000, id: 1 },
@@ -51,14 +47,7 @@ const Shop = () => {
   return (
     <>
       <img src={shop} alt="" />
-      <div className="bg-[#FAF3EA] flex justify-around p-8 -mt-2">
-        <div className="flex">
-          <button>
-            <img src={filter} alt="" />
-          </button>
-          <img src={grid} alt="" />
-          <img src={view} alt="" />
-        </div>
+      <div className="bg-[#FAF3EA] flex p-8 -mt-2">
         <div className="flex items-center gap-3">
           <label htmlFor="show">Show</label>
           <select

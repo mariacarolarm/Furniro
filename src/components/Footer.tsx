@@ -1,10 +1,9 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { footerSchema } from '../validation/validationSchemas';
-
-const facebook = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/facebook.png'
-const instagram = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/instagram.png'
-const twitter = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/twitter.png'
-const linkedIn = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/linkedIn.png'
+import facebook from '../images/facebook.png';
+import instagram from '../images/instagram.png';
+import twitter from '../images/twitter.png';
+import linkedIn from '../images/linkedIn.png';
 
 const Footer = () => {
   const initialValues = { email: "" };
