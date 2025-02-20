@@ -3,10 +3,9 @@ import { useState, useEffect } from "react";
 import { RootState } from "../../redux/store";
 import { removeItem, incrementQuantity, decrementQuantity } from "../../redux/cartSlice";
 import { Product } from "./types";
-
-const cart = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/cart.png'
-const trash = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/delete.png'
-const info = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Frame+161.png'
+import cart from '../../images/cart.png';
+import trash from '../../images/delete.png';
+import info from '../../images/info.png';
 
 const Cart = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);

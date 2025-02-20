@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from "../../redux/store";
@@ -6,13 +6,14 @@ import { Product } from '../shoppingCart/types';
 import { useAuth } from '@clerk/clerk-react';
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { checkoutSchema } from "../../validation/validationSchemas";
-
-const checkout = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/checkout.png'
-const info = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/Frame+161.png'
+import { deleteAllItems } from '../../redux/cartSlice';
+import checkout from '../../images/checkout.png';
+import info from '../../images/info.png';
 
 const Checkout = () => {
   const { signOut } = useAuth();
   const cartItems = useSelector((state: RootState) => state.cart.items);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [products, setProducts] = useState<Product[]>([]);
@@ -80,6 +81,7 @@ const Checkout = () => {
 
   const handlePlaceOrder = async () => {
     try {
+      dispatch(deleteAllItems());
       await signOut();
       navigate('/');
     } catch (error) {
