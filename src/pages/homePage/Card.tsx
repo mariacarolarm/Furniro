@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { CardProps } from "./types";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/cartSlice";
+import { toast } from 'react-toastify';
 import share from '../../images/share.png';
 import compare from '../../images/compare.png';
 import like from '../../images/like.png';
@@ -17,6 +18,12 @@ const Card = ({ id, image }: CardProps) => {
   const handleAddToCart = (event: React.MouseEvent) => {
     event.stopPropagation();
     dispatch(addItem({ id, quantity: 1 }));
+    toast.success("Product added to cart!", {
+      style: { 
+        fontSize: "16px", 
+        fontWeight: "bold", 
+       },
+  });    
   };
 
   return (

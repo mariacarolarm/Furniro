@@ -88,7 +88,7 @@ const Footer = () => {
       </div>
       </div>
       <div className='border-t ml-24 mr-24'>
-        <p className='text-base font-normal mt-9 mb-9'>2023 furniro. All rights reserved</p>
+        <p className='text-base font-normal mt-9 mb-9'>2023 Furniro. All rights reserved</p>
       </div>
     </footer>
   );

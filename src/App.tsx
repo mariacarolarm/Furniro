@@ -8,9 +8,10 @@ import ProductDetail from "./pages/productDetail/ProductDetail";
 import Cart from "./pages/shoppingCart/Cart";
 import Checkout from "./pages/checkout/Checkout";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-
   return (
     <BrowserRouter>
       <Header />
@@ -31,8 +32,19 @@ function App() {
         <Route path="*" element={<h1 className="text-center font-bold text-4xl">Not Found</h1>} />
       </Routes>
       <Footer />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </BrowserRouter>
-  )
+  );
 }
 
 export default App;
