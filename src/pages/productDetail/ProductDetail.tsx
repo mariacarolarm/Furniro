@@ -3,15 +3,15 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ProductType } from './types';
 import { addItem } from '../../redux/cartSlice';
+import { toast } from 'react-toastify';
 import Spinner from '../../components/Loading';
-
-const arrow = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/arrow.png'
-const asgaardSofa = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/asgaardSofa.png'
-const stars = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/stars.png'
-const face = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/face.png'
-const linkedin = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/linkedin.png'
-const oldTwitter = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/oldTwitter.png'
-const description = 'https://furniro-bucket.s3.us-east-2.amazonaws.com/description.png'
+import arrow from '../../images/arrow.png';
+import asgaardSofa from '../../images/asgaardSofa.png';
+import stars from '../../images/stars.png';
+import face from '../../images/face.png';
+import linkedin from '../../images/linkedin.png';
+import oldTwitter from '../../images/oldTwitter.png';
+import description from '../../images/description.png';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -42,6 +42,7 @@ const ProductDetail = () => {
 
   const handleAddToCart = (event: React.MouseEvent) => {
     event.stopPropagation();
+    toast.success('' + product.name + ' added to cart');
     if (product) {
     const productId = Number(product.id);
     dispatch(addItem({ id: productId, quantity: value }));     
