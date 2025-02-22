@@ -62,7 +62,7 @@ Clone o repositório:
 
 ```bash
 git clone git@github.com:mariacarolarm/Furniro.git
-cd desafio3
+cd Furniro
 ```
 
 ## Instale as dependências: Certifique-se de ter o Node.js instalado.
